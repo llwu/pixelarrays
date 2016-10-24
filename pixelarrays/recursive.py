@@ -1,10 +1,11 @@
+"""Recursive array multiplication algorithm."""
+
 import numpy as np
 
 from pixelarrays.util.plotting import SUBD
 
 
-def solve_recursive(f, g, i, j, k, output):
-    """Plots roots (x, y) given coarsened plots of f(x, w) and g(w, z)."""
+def _solve(f, g, i, j, k, output):
     if len(f) == 0 or len(g) == 0:
         output[i][j] = 1
         return
@@ -18,10 +19,11 @@ def solve_recursive(f, g, i, j, k, output):
                 if k2 >= f[0].shape[1] or k2 >= g[0].shape[0]:
                     break
                 if f[0][i2][k2] * g[0][k2][j2] > 1e-3:
-                    solve_recursive(f[1:], g[1:], i2, j2, k2, output)
+                    _solve(f[1:], g[1:], i2, j2, k2, output)
 
 
 def solve(f, g):
+    """Plots roots (x, y) given coarsened plots of f(x, w) and g(w, z)."""
     output = np.zeros(f[-1].shape)
-    solve_recursive(f, g, 0, 0, 0, output)
+    _solve(f, g, 0, 0, 0, output)
     return output

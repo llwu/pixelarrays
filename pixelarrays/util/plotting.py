@@ -1,3 +1,5 @@
+"""Plotting utilities."""
+
 import numpy as np
 
 SUBD = 2

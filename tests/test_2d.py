@@ -1,3 +1,5 @@
+"""Tests plotting the solutions to 2D equations."""
+
 import matplotlib.pyplot as plt
 
 from pixelarrays.util.plotting import plot, coarsen
@@ -5,6 +7,7 @@ from pixelarrays.recursive import solve
 
 
 def paper_example1():
+    """Tests example from https://arxiv.org/pdf/1609.00061v1.pdf."""
     f = plot(lambda x, w: x * x - w, -2.0, 2.0, -2.0, 2.0)
     fs = coarsen(f)
     plt.imshow(f.T,
