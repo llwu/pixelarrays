@@ -1,0 +1,7 @@
+CPU Model,method,dim,plot f (s),plot g (s),coarsen f (s),coarsen g (s),solve (s)
+Intel(R) Core(TM) M-5Y51 CPU @ 1.10GHz,baseline,2048,9.063483,9.056236,0,0,1.25875
+Intel(R) Core(TM) M-5Y51 CPU @ 1.10GHz,recursive,2048,7.793919,8.172083,0.106257,0.109758,0.168495
+Intel(R) Core(TM) M-5Y51 CPU @ 1.10GHz,sparse,2048,8.083002,8.206917,0,0,0.113482
+Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz,baseline,4096,26.068267,27.535852,0,0,45.325078
+Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz,recursive,4096,26.090477,,0.240985,0.23683,0.289717
+Intel(R) Core(TM) i7-3630QM CPU @ 2.40GHz,sparse,4096,25.769107,28.000097,0,0,0.399608

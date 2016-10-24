@@ -1,8 +1,19 @@
-"""Recursive array multiplication algorithm."""
+"""
+Recursive array multiplication algorithm. Requires nonnegative
+matrices. Requires coarsening which costs O(nm + mp) space and O(nm +
+mp) time. Runs in O(log n + log m + log p) depth and O(sum k_i) work on
+top of that, where k_i is the number of triples (x, y, z) with A_i[x][z]
+* B_i[z][y] > 0 and A_i and B_i are the ith coarsened matrices.
+
+Thus, this algorithm is suited to mid-sized matrices with mid or
+less sparsity. For smaller matrices consider simple matrix
+multiplication. For larger matrices, the space bottleneck will
+necessitate sparse matrix multiplication.
+"""
 
 import numpy as np
 
-from pixelarrays.util.plotting import SUBD
+from pixelarrays.util.plotting import SUBD, coarsen
 
 
 def _solve(f, g, i, j, k, output):
@@ -23,7 +34,9 @@ def _solve(f, g, i, j, k, output):
 
 
 def solve(f, g):
-    """Plots roots (x, y) given coarsened plots of f(x, w) and g(w, z)."""
-    output = np.zeros(f[-1].shape)
+    """Plots roots (x, y) given plots of f(x, w) and g(w, z)."""
+    f = coarsen(f)
+    g = coarsen(g)
+    output = np.zeros((f[-1].shape[0], g[-1].shape[1]))
     _solve(f, g, 0, 0, 0, output)
     return output
